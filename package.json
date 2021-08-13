@@ -1,6 +1,6 @@
 {
   "name": "ohook",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "oh hook !",
   "scripts": {
     "lint": "eslint {src,tests,stories}/**/*.{ts,tsx}",
@@ -58,6 +58,7 @@
     "@testing-library/react-hooks": "^7.0.1",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^26.0.24",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.throttle": "^4.1.6",
     "@types/react": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
@@ -77,6 +78,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1"
   }
 }

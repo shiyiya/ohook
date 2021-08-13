@@ -1,3 +1,28 @@
-import { useTimeoutFn } from '../useTimeoutFn/useTimeoutFn'
+import debounce from 'lodash.debounce'
+import { useRef, useMemo } from 'react'
+import { useUnmount } from '..'
 
-export const useDebounceFn = (fn: Function, ms = 0) => useTimeoutFn(fn, ms, false)
+interface DebounceSettings {
+  leading?: boolean | undefined
+  trailing?: boolean | undefined
+}
+
+export const useDebounceFn = (fn: (...arg: any[]) => void, wait?: number, options?: DebounceSettings) => {
+  const _fn = useRef(fn)
+  _fn.current = fn
+  const _debounce = useMemo(
+    () =>
+      debounce(
+        (...arg: any[]) => {
+          _fn.current(...arg)
+        },
+        wait,
+        options
+      ),
+    []
+  )
+
+  useUnmount(_debounce.flush)
+
+  return _debounce
+}

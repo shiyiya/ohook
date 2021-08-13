@@ -22,9 +22,7 @@ export const useThrottleFn = (fn: (...arg: any[]) => void, wait?: number, option
     []
   )
 
-  useUnmount(() => {
-    _throttle.flush()
-  })
+  useUnmount(_throttle.flush)
 
   return _throttle
 }

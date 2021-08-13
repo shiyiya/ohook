@@ -14,6 +14,7 @@
 ## List Of Hooks
 
 - [x] useClassicalState
+- [x] useToggle
 
 - [x] useMount
 - [x] useShow
