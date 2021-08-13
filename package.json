@@ -1,0 +1,82 @@
+{
+  "name": "ohook",
+  "version": "1.0.0-alpha.3",
+  "description": "oh hook !",
+  "scripts": {
+    "lint": "eslint {src,tests,stories}/**/*.{ts,tsx}",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "build:cjs": "tsc -m commonjs --target es5 --outDir cjs",
+    "build:es": "tsc -m es6  --target es5 --outDir esm",
+    "build:esnext": "tsc -m ESNext --target ESNext --outDir esnext",
+    "build": "yarn cleanup && yarn build:cjs && yarn build:es && yarn build:esnext",
+    "cleanup": "rimraf ./cjs ./esm ./esnext ./coverage",
+    "test": "jest",
+    "test:coverage": "yarn test --coverage",
+    "test:report": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
+    "publish": "yarn build && npm publish"
+  },
+  "sideEffects": false,
+  "main": "cjs/index.js",
+  "esnext": "esnext/index.js",
+  "types": "cjs/index.d.ts",
+  "module": "esm/index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "files": [
+    "cjs",
+    "esm"
+  ],
+  "keywords": [
+    "react",
+    "hook",
+    "react-hook"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shiyiya/ohook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shiyiya/ohook/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/react-hooks": "^7.0.1",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^26.0.24",
+    "@types/lodash.throttle": "^4.1.6",
+    "@types/react": "^17.0.15",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.1.1",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.0.4",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
+  }
+}
