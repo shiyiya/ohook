@@ -19,10 +19,10 @@ export const useDebounceFn = (fn: (...arg: any[]) => void, wait?: number, option
         wait,
         options
       ),
-    []
+    [wait]
   )
 
-  useUnmount(_debounce.flush)
+  useUnmount(_debounce.cancel)
 
   return _debounce
 }
