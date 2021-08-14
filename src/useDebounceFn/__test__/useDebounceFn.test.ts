@@ -95,21 +95,6 @@ describe('useDebounceFn', () => {
     expect(cb).not.toHaveBeenCalled()
   })
 
-  it('should force execute callback after maxWait milliseconds', () => {
-    const cb = jest.fn()
-    const { result } = renderHook(() => useDebounceFn(cb, 200))
-
-    result.current()
-    expect(cb).not.toHaveBeenCalled()
-    jest.advanceTimersByTime(149)
-    result.current()
-    expect(cb).not.toHaveBeenCalled()
-    jest.advanceTimersByTime(50)
-    expect(cb).not.toHaveBeenCalled()
-    jest.advanceTimersByTime(1)
-    expect(cb).toHaveBeenCalledTimes(1)
-  })
-
   it('should not execute callback twice if maxWait equals delay', () => {
     const cb = jest.fn()
 
