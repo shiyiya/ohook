@@ -1,8 +1,9 @@
 {
   "name": "ohook",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "oh hook !",
   "scripts": {
+    "prepare": "husky install",
     "lint": "eslint {src,tests,stories}/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
@@ -21,20 +22,20 @@
   "esnext": "esnext/index.js",
   "types": "cjs/index.d.ts",
   "module": "esm/index.js",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
     }
   },
   "lint-staged": {
     "src/**/**/*.{ts,tsx}": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "files": [
     "cjs",
-    "esm"
+    "esm",
+    "esnext"
   ],
   "keywords": [
     "react",
@@ -54,6 +55,8 @@
     "react": "^16.8 || ^17"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^7.0.1",
     "@testing-library/user-event": "^13.2.1",
