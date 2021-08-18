@@ -1,6 +1,6 @@
 {
   "name": "ohook",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "oh hook !",
   "scripts": {
     "prepare": "husky install",
@@ -15,7 +15,7 @@
     "test": "jest",
     "test:coverage": "yarn test --coverage",
     "test:report": "yarn test:coverage && cat ./coverage/lcov.info | coveralls",
-    "publish": "yarn build && npm publish"
+    "npm": "yarn build && npm publish"
   },
   "sideEffects": false,
   "main": "cjs/index.js",
