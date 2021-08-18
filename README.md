@@ -13,18 +13,18 @@
 
 ## List Of Hooks
 
-- [x] useClassicalState
-- [x] useToggle
+- [x] [useClassicalState](#useClassicalState)
+- [x] [useToggle](#useToggle)
 
-- [x] useMount
-- [x] useShow
-- [x] useUnmount
-- [x] useUpdateEffect
+- [x] [useMount](#useMount)
+- [x] [useShow](#useShow)
+- [x] [useUnmount](#useUnmount)
+- [x] [useUpdateEffect](#useUpdateEffect)
 
-- [x] useTimeoutFn
-- [x] useDebounceFn
-- [x] useThrottleFn
-- [x] useOnOutsideClick
+- [x] [useTimeoutFn](#useTimeoutFn)
+- [x] [useDebounceFn](#useDebounceFn)
+- [x] [useThrottleFn](#useThrottleFn)
+- [x] [useOnOutsideClick](#useOnOutsideClick)
 - [] ...
 
 ## Installation
