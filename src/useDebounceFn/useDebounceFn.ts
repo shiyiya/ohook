@@ -5,6 +5,7 @@ import { useUnmount } from '..'
 interface DebounceSettings {
   leading?: boolean | undefined
   trailing?: boolean | undefined
+  maxWait?: number | undefined
 }
 
 export const useDebounceFn = (fn: (...arg: any[]) => void, wait?: number, options?: DebounceSettings) => {
@@ -26,3 +27,5 @@ export const useDebounceFn = (fn: (...arg: any[]) => void, wait?: number, option
 
   return _debounce
 }
+
+export default useDebounceFn

@@ -4,7 +4,7 @@ export { useToggle } from './useToggle/useToggle'
 export { useMount } from './useMount/useMount'
 export { useShow } from './useShow/useShow'
 export { useUnmount } from './useUnmount/useUnmount'
-export { useUpdateEffect } from './useUpdateEffect/useUpdateEffect'
+export { useUpdate } from './useUpdate/useUpdate'
 
 export { useTimeoutFn } from './useTimeoutFn/useTimeoutFn'
 export { useDebounceFn } from './useDebounceFn/useDebounceFn'

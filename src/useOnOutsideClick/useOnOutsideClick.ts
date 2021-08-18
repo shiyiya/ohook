@@ -3,8 +3,8 @@ import { useEffect, useRef } from 'react'
 const options = { passive: true }
 
 export const useOnOutsideClick = <T extends HTMLElement>(
-  isListening: boolean,
   onOutsideClick: (event: MouseEvent | KeyboardEvent) => void,
+  isListening: boolean,
   withKeyboard?: boolean
 ) => {
   const $targetElment = useRef<T>(null)
@@ -46,3 +46,5 @@ export const useOnOutsideClick = <T extends HTMLElement>(
 
   return $targetElment
 }
+
+export default useOnOutsideClick

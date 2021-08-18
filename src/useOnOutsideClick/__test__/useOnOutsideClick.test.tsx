@@ -11,10 +11,10 @@ const OUTSIDE_TITLE = `outside`
 
 const App = ({ withKeyBoard = false }) => {
   const elRef = useOnOutsideClick<HTMLDivElement>(
-    true,
     () => {
       document.title = OUTSIDE_TITLE
     },
+    true,
     withKeyBoard
   )
 

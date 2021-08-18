@@ -26,3 +26,5 @@ export const useThrottleFn = (fn: (...arg: any[]) => void, wait?: number, option
 
   return _throttle
 }
+
+export default useThrottleFn

@@ -14,3 +14,5 @@ export const useRefs = (initialValue = {}) => {
     )
   ] as const
 }
+
+export default useRefs

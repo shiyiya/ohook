@@ -30,3 +30,5 @@ export const useTimeoutFn = (fn: Function, ms: number, autoRun = true) => {
 
   return { run, cancel } as const
 }
+
+export default useTimeoutFn

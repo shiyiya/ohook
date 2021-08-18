@@ -1,6 +1,6 @@
 import { DependencyList, useEffect, useRef } from 'react'
 
-export const useUpdateEffect = (fn: () => void, deps?: DependencyList) => {
+export const useUpdate = (fn: () => void, deps?: DependencyList) => {
   const isFristMount = useRef(true)
 
   useEffect(() => {
@@ -11,3 +11,5 @@ export const useUpdateEffect = (fn: () => void, deps?: DependencyList) => {
     }
   }, deps)
 }
+
+export default useUpdate

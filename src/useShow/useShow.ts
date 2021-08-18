@@ -26,3 +26,5 @@ export const useShow = (fn: EffectCallback) => {
     }
   })
 }
+
+export default useShow

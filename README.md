@@ -19,7 +19,7 @@
 - [x] [useMount](#useMount)
 - [x] [useShow](#useShow)
 - [x] [useUnmount](#useUnmount)
-- [x] [useUpdateEffect](#useUpdateEffect)
+- [x] [useUpdate](#useUpdate)
 
 - [x] [useTimeoutFn](#useTimeoutFn)
 - [x] [useDebounceFn](#useDebounceFn)
@@ -41,6 +41,8 @@ npm i ohook
 
 ### useClassicalState
 
+setState like Class Component.
+
 ```ts
 const [state, setState] = useClassicalState({ isLoading: true, data: [] })
 
@@ -58,7 +60,7 @@ const [state, toggle] = useToggle() // detault: false
 
 toggle() // toggle !state
 toggle(true) // toggle true
-toggle(false) // toggle true
+toggle(false) // toggle false
 ```
 
 ### useMount
@@ -68,6 +70,9 @@ Run effect only when component is first mounted.
 ```ts
 useMount(() => {
   // code ...
+  return () => {
+    // unmount
+  }
 })
 ```
 
@@ -111,7 +116,11 @@ useUpdateEffect(() => {
 
 ### useTimeoutFn
 
-handle the setTimeout timer function.
+handle the setTimeout timer function. Can be called repeatedly.
+
+Returns:
+
+- (Function): Returns the new timeout function.
 
 ```ts
 useTimeout(fn: () => void, delay: number | undefined ,autoRun: boolean);
@@ -119,12 +128,19 @@ useTimeout(fn: () => void, delay: number | undefined ,autoRun: boolean);
 const fn = useTimeoutFn(() => {}, 1000, true) // auto run after 1s
 const fn2 = useTimeoutFn(() => {}, 1000, false) // run effect when u call it
 
-fn() // Cancel the previous one and retime it. Can be called repeatedly
+fn() // Cancel the previous one and retime it.
+fn2() // run after 1s
 ```
 
 ### useDebounceFn
 
 handle the [debounce](https://lodash.com/docs/4.17.15#debounce) function base on `lodash.debounce`.
+
+- options: [loadsh.debounce.options](https://lodash.com/docs/4.17.15#debounce)
+
+Returns:
+
+- (Function): Returns the new debounce function.
 
 ```tsx
 // Use it like loadsh.debounce
@@ -139,8 +155,14 @@ const fn = useDebounceFn(() => {
 
 handle the [throttle](https://lodash.com/docs/4.17.15#throttle) function base on `lodash.throttle`.
 
+- options: [loadsh.throttle.options](https://lodash.com/docs/4.17.15#throttle)
+
+Returns:
+
+- (Function): Returns the new throttled function.
+
 ```tsx
-// Use it like loadsh.debounce
+// Use it like loadsh.throttle
 const fn = useThrottleFn(() => {
   setState(/* */)
 }, 1000)
@@ -154,17 +176,19 @@ Triggers callback when user clicks outside the target element.
 
 - withKeyboard <boolean> - Click the `esc` button to trigger.
 
-- return `useRef()`.
+Returns:
+
+- `useRef()`.
 
 ```tsx
 function useOnOutsideClick<T extends HTMLElement>(
-  isListening: boolean = false,
   onOutsideClick: (event: MouseEvent | KeyboardEvent) => void,
+  isListening: boolean = false,
   withKeyboard?: boolean = false
 ): React.RefObject<T>
 
-const ref = useOnOutSideClick(true, () => {})
+const ref = useOnOutSideClick(() => {}, true)
 
 
-<div onClick={ref} />
+<div ref={ref} />
 ```

@@ -17,3 +17,5 @@ export function useClassicalState<S extends Record<string, any>>(
 
   return [state, setState]
 }
+
+export default useClassicalState
