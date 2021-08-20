@@ -1,4 +1,4 @@
-name: main
+name: test
 
 on: [push, pull_request]
 
@@ -12,5 +12,3 @@ jobs:
         run: yarn && yarn test
       - name: report
         run: yarn test:report
-        env:
-          CI: true
