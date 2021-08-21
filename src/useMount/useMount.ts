@@ -1,7 +1,7 @@
-import { useEffectOnce } from '../useEffectOnce/useEffectOnce'
+import { EffectCallback, useEffect } from 'react'
 
-export const useMount = (fn: () => void) => {
-  useEffectOnce(fn)
+export const useMount = (effect: EffectCallback) => {
+  useEffect(effect, [])
 }
 
 export default useMount

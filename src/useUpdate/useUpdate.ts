@@ -1,6 +1,6 @@
-import { DependencyList, useEffect, useRef } from 'react'
+import { DependencyList, EffectCallback, useEffect, useRef } from 'react'
 
-export const useUpdate = (fn: () => void, deps?: DependencyList) => {
+export const useUpdate = (fn: EffectCallback, deps?: DependencyList) => {
   const isFristMount = useRef(true)
 
   useEffect(() => {
