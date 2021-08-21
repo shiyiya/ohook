@@ -1,8 +1,14 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useRef } from 'react'
+import { useMount } from '../useMount/useMount'
 
-export const useTimeoutFn = (fn: Function, ms: number, autoRun = true) => {
+export const useTimeout = (
+  fn: Function,
+  delay?: number,
+  immediate: boolean = true
+): { run: VoidFunction; cancel: VoidFunction } => {
   const cb = useRef(fn)
   const timeout = useRef<ReturnType<typeof setTimeout>>()
+  cb.current = fn
 
   const run = useCallback(
     (...arg) => {
@@ -10,25 +16,21 @@ export const useTimeoutFn = (fn: Function, ms: number, autoRun = true) => {
 
       timeout.current = setTimeout(() => {
         cb.current(...arg)
-      }, ms)
+      }, delay)
     },
-    [ms]
+    [delay]
   )
 
   const cancel = useCallback(() => {
     if (timeout.current) clearTimeout(timeout.current)
   }, [])
 
-  useEffect(() => {
-    cb.current = fn
-  }, [fn])
-
-  useEffect(() => {
-    if (autoRun) run()
+  useMount(() => {
+    if (immediate) run()
     return cancel
-  }, [])
+  })
 
-  return { run, cancel } as const
+  return { run, cancel }
 }
 
-export default useTimeoutFn
+export default useTimeout

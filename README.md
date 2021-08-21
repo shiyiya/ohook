@@ -13,18 +13,29 @@
 
 ## List Of Hooks
 
+### State
+
 - [x] [useClassicalState](#useClassicalState)
 - [x] [useToggle](#useToggle)
+
+### LifeCycle
 
 - [x] [useMount](#useMount)
 - [x] [useShow](#useShow)
 - [x] [useUnmount](#useUnmount)
 - [x] [useUpdate](#useUpdate)
 
-- [x] [useTimeoutFn](#useTimeoutFn)
+### SideEffect
+
+- [x] [useTimeout](#useTimeout)
+- [x] [useInterval](#useInterval)
 - [x] [useDebounceFn](#useDebounceFn)
 - [x] [useThrottleFn](#useThrottleFn)
+
+### DOM
+
 - [x] [useOnOutsideClick](#useOnOutsideClick)
+- [] [useEventTarget](#useEventTarget)
 - [] ...
 
 ## Installation
@@ -100,21 +111,21 @@ useUnmount(() => {
 })
 ```
 
-### useUpdateEffect
+### useUpdate
 
 Effect hook that ignores the first render (not invoked on mount)
 
 ```ts
-function useUpdateEffect(effect: React.EffectCallback, deps?: React.DependencyList): void
+function useUpdate(effect: React.EffectCallback, deps?: React.DependencyList): void
 
 const state = useState(1)
 
-useUpdateEffect(() => {
+useUpdate(() => {
   // code
 }, [state])
 ```
 
-### useTimeoutFn
+### useTimeout
 
 handle the setTimeout timer function. Can be called repeatedly.
 
@@ -123,10 +134,24 @@ Returns:
 - (Function): Returns the new timeout function.
 
 ```ts
-useTimeout(fn: () => void, delay: number | undefined ,autoRun: boolean);
+useTimeout(fn: () => void, delay: number | undefined ,immediate: boolean);
 
-const fn = useTimeoutFn(() => {}, 1000, true) // auto run after 1s
-const fn2 = useTimeoutFn(() => {}, 1000, false) // run effect when u call it
+const fn = useTimeout(() => {}, 1000, true) // auto run after 1s
+const fn2 = useTimeout(() => {}, 1000, false) // run effect when u call it
+
+fn() // Cancel the previous one and retime it.
+fn2() // run after 1s
+```
+
+### useInterval
+
+handle the setTimeout timer function, base on `useTimeout`. Can be called repeatedly.
+
+```ts
+useInterval(fn: () => void, delay: number | undefined ,immediate: boolean);
+
+const fn = useInterval(() => {}, 1000, true) // auto run after 1s
+const fn2 = useInterval(() => {}, 1000, false) // run effect when u call it
 
 fn() // Cancel the previous one and retime it.
 fn2() // run after 1s

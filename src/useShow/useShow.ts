@@ -1,6 +1,5 @@
 import { EffectCallback, useRef } from 'react'
 import { useMount } from '..'
-import { isFunction } from '../utils/isFunction'
 import { nextTick } from '../utils/nextTick'
 
 export const useShow = (fn: EffectCallback) => {
@@ -15,7 +14,7 @@ export const useShow = (fn: EffectCallback) => {
       if (document.hidden) {
         effectReturn.current = effect.current()
       } else {
-        if (effectReturn.current && isFunction(effectReturn.current)) effectReturn.current()
+        effectReturn?.current?.()
       }
     }
 
