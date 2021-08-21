@@ -35,8 +35,8 @@
 ### DOM
 
 - [x] [useOnOutsideClick](#useOnOutsideClick)
-- [] [useEventTarget](#useEventTarget)
-- [] ...
+- [x] [useEventTarget](#useEventTarget)
+- [ ] useMagic
 
 ## Installation
 
@@ -216,4 +216,16 @@ const ref = useOnOutSideClick(() => {}, true)
 
 
 <div ref={ref} />
+```
+
+### useEventTarget
+
+The hook encapsulates onChange and value logic for form controls that obtains value through event.target.value. It also supports custom transformer and reset functionalities.
+
+```tsx
+const [value, {  onChange, reset }] = useEventTarget({ initialValue: 'this is initial value' })
+
+
+<input onChange={fn} />
+<button onClick={reset}/>
 ```

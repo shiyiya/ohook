@@ -10,4 +10,6 @@ export { useTimeout } from './useTimeout/useTimeout'
 export { useInterval } from './useInterval/useInterval'
 export { useDebounceFn } from './useDebounceFn/useDebounceFn'
 export { useThrottleFn } from './useThrottleFn/useThrottleFn'
+
 export { useOnOutsideClick } from './useOnOutsideClick/useOnOutsideClick'
+export { useEventTarget } from './useEventTarget/useEventTarget'
