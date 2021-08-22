@@ -1,30 +1,26 @@
 import throttle from 'lodash.throttle'
 import { useMemo, useRef } from 'react'
 import { useUnmount } from '../useUnmount/useUnmount'
+import type { DebouncedFunc } from '../utils/type'
 
 interface ThrottleSettings {
   leading?: boolean | undefined
   trailing?: boolean | undefined
 }
 
-export const useThrottleFn = (fn: (...arg: any[]) => void, wait?: number, options?: ThrottleSettings) => {
-  const _fn = useRef(fn)
-  _fn.current = fn
-  const _throttle = useMemo(
-    () =>
-      throttle(
-        (...arg: any[]) => {
-          _fn.current(...arg)
-        },
-        wait,
-        options
-      ),
-    [wait]
-  )
+export const useThrottleFn = <T extends (...args: any[]) => any>(
+  factory: T,
+  wait?: number,
+  options?: ThrottleSettings
+): DebouncedFunc<T> => {
+  const factoryRef = useRef(factory)
+  factoryRef.current = factory
 
-  useUnmount(_throttle.cancel)
+  const caller = useMemo(() => throttle(((...arg) => factoryRef.current(...arg)) as T, wait, options), [wait])
 
-  return _throttle
+  useUnmount(caller.cancel)
+
+  return caller
 }
 
 export default useThrottleFn

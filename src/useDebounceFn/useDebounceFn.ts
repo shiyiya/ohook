@@ -1,6 +1,7 @@
 import debounce from 'lodash.debounce'
 import { useRef, useMemo } from 'react'
-import { useUnmount } from '..'
+import { useUnmount } from '../useUnmount/useUnmount'
+import type { DebouncedFunc } from '../utils/type'
 
 interface DebounceSettings {
   leading?: boolean | undefined
@@ -8,24 +9,19 @@ interface DebounceSettings {
   maxWait?: number | undefined
 }
 
-export const useDebounceFn = (fn: (...arg: any[]) => void, wait?: number, options?: DebounceSettings) => {
-  const _fn = useRef(fn)
-  _fn.current = fn
-  const _debounce = useMemo(
-    () =>
-      debounce(
-        (...arg: any[]) => {
-          _fn.current(...arg)
-        },
-        wait,
-        options
-      ),
-    [wait]
-  )
+export const useDebounceFn = <T extends (...arg: any[]) => any>(
+  factory: T,
+  wait?: number,
+  options?: DebounceSettings
+): DebouncedFunc<T> => {
+  const factoryRef = useRef(factory)
+  factoryRef.current = factory
 
-  useUnmount(_debounce.cancel)
+  const caller = useMemo(() => debounce(((...arg) => factoryRef.current(...arg)) as T, wait, options), [wait])
 
-  return _debounce
+  useUnmount(caller.cancel)
+
+  return caller
 }
 
 export default useDebounceFn
