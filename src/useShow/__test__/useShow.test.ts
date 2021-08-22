@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react-hooks/dom'
 import { useShow } from '..'
 
 describe('useShow', () => {
@@ -13,6 +13,17 @@ describe('useShow', () => {
     await Promise.resolve().then(() => {})
     rerender()
     expect(fn).toHaveBeenCalledTimes(1)
+
+    const fn2 = jest.fn()
+    const {} = renderHook(() => useShow(fn2))
+
+    const _promise = Promise
+    act(() => {
+      window.Promise = null as any
+    })
+    await _promise.resolve().then(() => {})
+    expect(fn2).toHaveBeenCalledTimes(1)
+
     //TODO: emit visibilitychange
   })
 })

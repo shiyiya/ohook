@@ -40,6 +40,18 @@ describe('useTimeout', () => {
     expect(callback).toHaveBeenCalledTimes(2) // should be called repeatedly
   })
 
+  it('should be cancellable', () => {
+    const callback = jest.fn()
+    const { result } = setUp({ fn: callback, delay: 20 })
+
+    expect(callback).not.toBeCalled()
+    jest.advanceTimersByTime(19)
+    result.current.cancel()
+    expect(callback).not.toBeCalled()
+    jest.advanceTimersByTime(20)
+    expect(callback).not.toBeCalled()
+  })
+
   it('should be work with opts', () => {
     const callback = jest.fn()
     const { result } = setUp({ fn: callback, delay: 20, immediate: false })

@@ -1,3 +1,9 @@
+import type { Dispatch } from 'react'
+
+type SetPartialStateAction<S> = Partial<S> | ((prevState: S) => Partial<S>)
+
+export type DispatchPartialStateAction<S> = Dispatch<SetPartialStateAction<S> | void>
+
 export interface DebouncedFunc<T extends (...args: any[]) => any> {
   /**
    * Call the original function, but applying the debounce rules.
