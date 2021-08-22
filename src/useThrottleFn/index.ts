@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle'
 import { useMemo, useRef } from 'react'
-import { useUnmount } from '../useUnmount/useUnmount'
+import { useUnmount } from '../useUnmount'
 import type { DebouncedFunc } from '../utils/type'
 
 interface ThrottleSettings {

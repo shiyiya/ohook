@@ -1,4 +1,4 @@
-import useTimeout from '../useTimeout/useTimeout'
+import useTimeout from '../useTimeout'
 
 export const useInterval = (fn: Function, delay?: number, immediate: boolean = true) => {
   const timeout = useTimeout(

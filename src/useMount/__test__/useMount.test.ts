@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useMount } from '../useMount'
+import { useMount } from '..'
 
 describe('useMount', () => {
   it('should execute useMount if mount & only executed once', () => {

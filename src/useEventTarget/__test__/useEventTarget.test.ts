@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import useEventTarget from '../useEventTarget'
+import useEventTarget from '..'
 
 describe('useEventTarget', () => {
   it('should be defined', () => {

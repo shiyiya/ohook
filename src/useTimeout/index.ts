@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react'
-import { useMount } from '../useMount/useMount'
+import { useMount } from '../useMount'
 
 export const useTimeout = (
   fn: Function,

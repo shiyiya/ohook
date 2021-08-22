@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce'
 import { useRef, useMemo } from 'react'
-import { useUnmount } from '../useUnmount/useUnmount'
+import { useUnmount } from '../useUnmount'
 import type { DebouncedFunc } from '../utils/type'
 
 interface DebounceSettings {

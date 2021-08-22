@@ -1,5 +1,5 @@
 import { EffectCallback, useRef } from 'react'
-import { useMount } from '..'
+import { useMount } from '../useMount'
 import { nextTick } from '../utils/nextTick'
 
 export const useShow = (fn: EffectCallback) => {

@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useClassicalState } from '../..'
-import { useUpdate } from '../useUpdate'
+import { useUpdate } from '..'
 
 const useTest = () => {
   const [state, setState] = useClassicalState({

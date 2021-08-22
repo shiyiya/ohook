@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useShow } from '../useShow'
+import { useShow } from '..'
 
 describe('useShow', () => {
   it('', async () => {

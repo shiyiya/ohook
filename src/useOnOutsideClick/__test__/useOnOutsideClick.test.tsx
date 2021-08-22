@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent, cleanup, screen } from '@testing-library/react'
 import { useOnOutsideClick } from '../..'
 import userEvent from '@testing-library/user-event'
-import { useMount } from '../../useMount/useMount'
+import { useMount } from '../../useMount'
 
 afterEach(cleanup)
 

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import useInterval from '../useInterval'
+import useInterval from '..'
 
 interface ParamsObj {
   fn: (...arg: any) => any
