@@ -8,6 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/shiyiya/ohook/badge.svg?branch=main)](https://coveralls.io/github/shiyiya/ohook?branch=main)
 [![NPM Version](https://img.shields.io/npm/v/ohook.svg)](https://npmjs.com/package/ohook)
 [![NPM Download](https://img.shields.io/npm/dt/ohook.svg)](https://npmjs.com/package/ohook)
+[![GitHub license](https://img.shields.io/github/license/shiyiya/ohook)](https://github.com/shiyiya/ohook/LICENSE)
 
 </div>
 
