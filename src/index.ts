@@ -3,8 +3,8 @@ export { useToggle } from './useToggle'
 
 export { useMount } from './useMount'
 export { useShow } from './useShow'
-export { useUnmount } from './useUnmount'
-export { useUpdate } from './useUpdate'
+export { useWillUnmount } from './useWillUnmount'
+export { useDidUpdate } from './useDidUpdate'
 
 export { useTimeout } from './useTimeout'
 export { useInterval } from './useInterval'

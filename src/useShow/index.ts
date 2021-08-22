@@ -8,7 +8,7 @@ export const useShow = (fn: EffectCallback) => {
   effect.current = fn
 
   useMount(() => {
-    nextTick(effect.current)
+    nextTick(() => (effectReturn.current = effect.current()))
 
     const visibilitychangeHandler = () => {
       if (document.hidden) {

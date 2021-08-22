@@ -22,8 +22,8 @@
 
 - [x] [useMount](#useMount)
 - [x] [useShow](#useShow)
-- [x] [useUnmount](#useUnmount)
-- [x] [useUpdate](#useUpdate)
+- [x] [useWillUnmount](#useWillUnmount)
+- [x] [useDidUpdate](#useDidUpdate)
 
 ### SideEffect
 
@@ -36,7 +36,7 @@
 
 - [x] [useOnOutsideClick](#useOnOutsideClick)
 - [x] [useEventTarget](#useEventTarget)
-- [ ] useMagic
+- [ ] Waiting for inspiration ···
 
 ## Installation
 
@@ -80,16 +80,16 @@ Run effect only when component is first mounted.
 
 ```ts
 useMount(() => {
-  // code ...
+  // DidMount ...
   return () => {
-    // unmount
+    // WillUnmount
   }
 })
 ```
 
 ### useShow
 
-Run effect when component is visible after `usemount` and document visibilitychanged.
+Run effect when component is visible after `useMount` and document visibilitychanged.
 
 ```ts
 useShow(() => {
@@ -101,26 +101,26 @@ useShow(() => {
 })
 ```
 
-### useUnmount
+### useWillUnmount
 
 Run effect only when component is unmounted.
 
 ```ts
-useUnmount(() => {
+useWillUnmount(() => {
   // code
 })
 ```
 
-### useUpdate
+### useDidUpdate
 
 Effect hook that ignores the first render (not invoked on mount)
 
 ```ts
-function useUpdate(effect: React.EffectCallback, deps?: React.DependencyList): void
+function useDidUpdate(effect: React.EffectCallback, deps?: React.DependencyList): void
 
 const state = useState(1)
 
-useUpdate(() => {
+useDidUpdate(() => {
   // code
 }, [state])
 ```

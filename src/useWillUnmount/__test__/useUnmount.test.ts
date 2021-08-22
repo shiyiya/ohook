@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useUnmount } from '..'
+import { useWillUnmount } from '..'
 
 it('should be executed when the component is unloaded', () => {
   const cb = jest.fn()
-  const { unmount } = renderHook(() => useUnmount(cb))
+  const { unmount } = renderHook(() => useWillUnmount(cb))
 
   expect(cb).not.toHaveBeenCalled()
   unmount()

@@ -1,6 +1,6 @@
 import { DependencyList, EffectCallback, useEffect, useRef } from 'react'
 
-export const useUpdate = (fn: EffectCallback, deps?: DependencyList) => {
+export const useDidUpdate = (fn: EffectCallback, deps?: DependencyList) => {
   const isFristMount = useRef(true)
 
   useEffect(() => {
@@ -12,4 +12,4 @@ export const useUpdate = (fn: EffectCallback, deps?: DependencyList) => {
   }, deps)
 }
 
-export default useUpdate
+export default useDidUpdate

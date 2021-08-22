@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks/dom'
 import { useClassicalState } from '../..'
-import { useUpdate } from '..'
+import { useDidUpdate } from '..'
 
 const useTest = () => {
   const [state, setState] = useClassicalState({
@@ -9,7 +9,7 @@ const useTest = () => {
     updatedCount: 0
   })
 
-  useUpdate(() => {
+  useDidUpdate(() => {
     setState((s) => ({ updatedCount: s.updatedCount + 1 }))
   }, [state.count])
 

@@ -1,10 +1,10 @@
 import { renderHook } from '@testing-library/react-hooks/dom'
-import { useMount } from '..'
+import { useDidMount } from '..'
 
 describe('useMount', () => {
   it('should execute useMount if mount & only executed once', () => {
     const cb = jest.fn()
-    const { rerender } = renderHook(() => useMount(cb))
+    const { rerender } = renderHook(() => useDidMount(cb))
 
     expect(cb).toHaveBeenCalled()
     rerender()
