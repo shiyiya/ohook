@@ -18,6 +18,7 @@
 
 - [x] [useClassicalState](#useClassicalState)
 - [x] [useToggle](#useToggle)
+- [x] useControllableValue(#useControllableValue)
 
 ### LifeCycle
 
@@ -73,6 +74,17 @@ const [state, toggle] = useToggle() // detault: false
 toggle() // toggle !state
 toggle(true) // toggle true
 toggle(false) // toggle false
+```
+
+### useControllableValue
+
+```ts
+interface Options<T> {
+  defaultValue?: T | (() => T)
+  value?: T | (() => T)
+  onChange?: (val: T) => void
+}
+function useControllableValue<T = any>(props?: Options<T>): readonly [T | null, (v: T) => void]
 ```
 
 ### useMount

@@ -1,5 +1,6 @@
-export { useClassicalState } from './useClassicalState'
 export { useToggle } from './useToggle'
+export { useClassicalState } from './useClassicalState'
+export { useControllableValue } from './useControllableValue'
 
 export { useMount } from './useMount'
 export { useShow } from './useShow'
