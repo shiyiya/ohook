@@ -16,26 +16,40 @@ describe('useControllableValue', () => {
 
   it('should have defalut value', () => {
     const { result } = renderHook(() => useControllableValue({ defaultValue: 'hello' }))
-    expect(result.current[0]).toEqual('hello')
+    expect(result.current[0]).toBe('hello')
+
     const { result: r1 } = renderHook(() => useControllableValue({ defaultValue: 'hello', value: 'hi' }))
-    expect(r1.current[0]).toEqual('hi')
+    expect(r1.current[0]).toBe('hi')
+
+    const { result: r2 } = renderHook(() => useControllableValue())
+    expect(r2.current[0]).toBe(null)
   })
 
   it('should support callback', () => {
-    const cb = jest.fn((s: string) => {
-      rerender({ v: s })
-    })
-    const { result, rerender } = renderHook(
-      ({ v }) => useControllableValue({ defaultValue: 'hello', value: v, onChange: cb }),
-      {
-        initialProps: { v: 'hi' }
-      }
-    )
+    const cb = jest.fn()
+    const { result, rerender } = renderHook(() => useControllableValue({ value: 'hi', onChange: cb }))
 
     act(() => {
       result.current[1]('ohook')
     })
     expect(cb).toHaveBeenCalledWith('ohook')
-    expect(result.current[0]).toEqual('ohook')
+    rerender()
+    expect(cb).toHaveBeenCalledTimes(1)
+
+    const cb1 = jest.fn()
+    const { result: r1 } = renderHook(() => useControllableValue({ value: 'hi', defaultValue: 'hello', onChange: cb1 }))
+    act(() => {
+      r1.current[1]('ohook')
+    })
+    expect(cb1).toHaveBeenCalledWith('ohook')
+    rerender()
+    expect(cb1).toHaveBeenCalledTimes(1)
+
+    const { result: r2 } = renderHook(() => useControllableValue())
+    expect(r2.current[0]).toBe(null)
+    act(() => {
+      r2.current[1]('ohook')
+    })
+    expect(r2.current[0]).toBe('ohook')
   })
 })
